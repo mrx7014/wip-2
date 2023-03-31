@@ -37,15 +37,14 @@ step() {
 }
 
 build() {
-	step "Creating build directory..." "mkdir -p /tmp/isobuild/airootfs/root"
   	step "Updating packages and installing archiso..." "pacman -Syu --noconfirm archiso"
-  	step "Building ISO..." "mkarchiso -v -w work/ -o out/ src/"
+  	step "Building ISO..." "mkarchiso -v -w work/ -o ./ src/"
   	step "Generating checksums text file..." "
 		cat <<-EOL >CHECKSUMS.txt
-			b2sum  $(b2sum "archlinux-$DATE-x86_64.iso")
-			md5sum  $(md5sum "archlinux-$DATE-x86_64.iso")
-			sha1sum  $(sha1sum "archlinux-$DATE-x86_64.iso")
-			sha256sum  $(sha256sum "archlinux-$DATE-x86_64.iso")
+			b2sum  $(b2sum "liquidOS-$DATE-x86_64.iso")
+			md5sum  $(md5sum "liquidOS-$DATE-x86_64.iso")
+			sha1sum  $(sha1sum "liquidOS-$DATE-x86_64.iso")
+			sha256sum  $(sha256sum "liquidOS-$DATE-x86_64.iso")
 		EOL
   	"
 }
